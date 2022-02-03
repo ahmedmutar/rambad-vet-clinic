@@ -25,5 +25,16 @@ class UserSeeder extends Seeder
             'created_by' => 'Rambat Santoso',
             'created_at' => '2022-02-03'
         ]);
+
+        DB::table('users')->insert([
+          'branch_code' => '001',
+          'branch_name' => 'Pondok Aren',
+          'isDeleted' => 0,
+          'user_id' => 1,
+          'user_update_id' => 1,
+          'created_at' => '2022-02-03',
+          'updated_at' => '2022-02-03',
+          'address' => 'Pondok Aren'
+      ]);
     }
 }
