@@ -339,7 +339,7 @@ class PasienController extends Controller
             ->where('id', '=', $request->user()->branch_id)
             ->first();
 
-        $patient_number = 'BVC-P-' . $getbranchuser->branch_code . '-' . str_pad($lastpatient + 1, 4, 0, STR_PAD_LEFT);
+        $patient_number = 'RVC-P-' . $getbranchuser->branch_code . '-' . str_pad($lastpatient + 1, 4, 0, STR_PAD_LEFT);
 
         $patient = Patient::create([
             'id_member' => $patient_number,
@@ -425,7 +425,7 @@ class PasienController extends Controller
                 ->where('id', '=', $request->id_cabang)
                 ->first();
 
-            $patient_number = 'BVC-P-' . $getbranchuser->branch_code . '-' . str_pad($lastpatient + 1, 4, 0, STR_PAD_LEFT);
+            $patient_number = 'RVC-P-' . $getbranchuser->branch_code . '-' . str_pad($lastpatient + 1, 4, 0, STR_PAD_LEFT);
 
             $temp_id_member = $patient_number;
             $temp_branch = $request->id_cabang;

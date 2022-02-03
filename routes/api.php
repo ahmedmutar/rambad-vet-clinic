@@ -198,6 +198,24 @@ Route::group(['middleware' => ['api']], function () {
         Route::delete('penggajian', 'PenggajianController@delete');
 
         Route::get('penggajian/generate', 'PenggajianController@generate');
+
+        //petshop
+        Route::get('petshop/filteritem', 'PetshopController@filteritem');
+        Route::post('petshop', 'PetshopController@create');
+        Route::get('petshop', 'PetshopController@index');
+
+        Route::get('petshop/printreceipt', 'PetshopController@print_receipt');
+        Route::get('petshop/generate', 'PetshopController@download_report_excel');
+
+        //laporan keuangan petshop
+        Route::get('laporan-keuangan-harian', 'LaporanKeuanganHarianPetshopController@index');
+        Route::get('laporan-keuangan-harian/generate', 'LaporanKeuanganHarianPetshopController@download_report');
+
+        Route::get('laporan-keuangan-mingguan', 'LaporanKeuanganMingguanPetshopController@index');
+        Route::get('laporan-keuangan-mingguan/generate', 'LaporanKeuanganMingguanPetshopController@download_report');
+
+        Route::get('laporan-keuangan-bulanan', 'LaporanKeuanganBulananPetshopController@index');
+        Route::get('laporan-keuangan-bulanan/generate', 'LaporanKeuanganBulananPetshopController@download_report');
     });
 });
 

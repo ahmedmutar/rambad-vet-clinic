@@ -36,7 +36,7 @@ $(document).ready(function() {
     if (getUrl.includes('profil')) {
       $('.content-header').append('<h3>User Profil</h3>')
     } else if(getUrl == '/') {
-      $('.content-header').append('<h2>Selamat datang di Sistem Administrasi Bintang Vet Clinic</h2>')
+      $('.content-header').append('<h2>Selamat datang di Sistem Administrasi Rambad Vet Clinic</h2>')
     }
 
     if (role === 'admin') {
@@ -46,17 +46,20 @@ $(document).ready(function() {
       $('.menuKeuangan').show(); $('.menuKunjungan').show();
       $('.menuCabang').show();   $('.menuUser').show();
       $('.menuPeriksa').show();  $('.menuPenggajian').show();
+      $('.menuPetShop').show();
     } else if (role === 'resepsionis') {
       $('.menuPasien').show();   $('.menuPendaftaran').show();
       $('.menuTindakan').show(); $('.menuPembayaran').show();
       $('.menuKunjungan').show(); $('.menuGudang').show();
       $('.menuPenggajian').show();
+      $('.menuPetShop').show();
     } else if (role === 'dokter') {
       $('.menuDokter').show();   $('.menuPasien').show();
       $('.menuTindakan').show(); $('.menuGudang').show();
       $('.menuKunjungan').show(); $('.menuPeriksa').show();
       $('.menuPendaftaran').show(); $('.menuKeuangan').show();
       $('.menuPembayaran').show(); $('.menuPenggajian').show();
+      $('.menuPetShop').show();
     }
   }
 
@@ -80,6 +83,8 @@ $(document).ready(function() {
         $('.menuDokter').addClass('active');
       } else if (pathName === '/laporan-keuangan-harian' || pathName === '/laporan-keuangan-mingguan' || pathName === '/laporan-keuangan-bulanan') {
         $('.menuKeuangan').addClass('active');
+      } else if (pathName === '/laporan-keuangan-harian-petshop' || pathName === '/laporan-keuangan-mingguan-petshop' || pathName === '/laporan-keuangan-bulanan-petshop') {
+        $('.menuKeuanganPetshop').addClass('active');
       }
     } else {
       // additional custom url
@@ -91,10 +96,20 @@ $(document).ready(function() {
       } else if (Value['href'] ==  origin + '/hasil-pemeriksaan' && (pathName == '/hasil-pemeriksaan/tambah'
         || pathName.includes('/hasil-pemeriksaan/edit') || pathName.includes('/hasil-pemeriksaan/detail'))) {
         $(Value).parent().addClass('active');
-      } else if ((Value['href'] ==  origin + '/laporan-keuangan-harian' && (pathName.includes('/laporan-keuangan-harian/detail')))
+
+      } else if (Value['href'] ==  origin + '/petshop' && (pathName == '/petshop/tambah'
+      || pathName.includes('/petshop/edit') || pathName.includes('/petshop/detail'))) {
+      $(Value).parent().addClass('active');
+
+      }else if ((Value['href'] ==  origin + '/laporan-keuangan-harian' && (pathName.includes('/laporan-keuangan-harian/detail')))
         || (Value['href'] ==  origin + '/laporan-keuangan-mingguan' && (pathName.includes('/laporan-keuangan-mingguan/detail')))
         || (Value['href'] ==  origin + '/laporan-keuangan-bulanan' && (pathName.includes('/laporan-keuangan-bulanan/detail'))) ) {
         $('.menuKeuangan').addClass('active'); $(Value).parent().addClass('active');
+      }
+      else if ((Value['href'] ==  origin + '/laporan-keuangan-harian-petshop' && (pathName.includes('/laporan-keuangan-harian-petshop/detail')))
+        || (Value['href'] ==  origin + '/laporan-keuangan-mingguan-petshop' && (pathName.includes('/laporan-keuangan-mingguan-petshop/detail')))
+        || (Value['href'] ==  origin + '/laporan-keuangan-bulanan-petshop' && (pathName.includes('/laporan-keuangan-bulanan-petshop/detail'))) ) {
+        $('.menuKeuanganPetshop').addClass('active'); $(Value).parent().addClass('active');
       }
     }
   });

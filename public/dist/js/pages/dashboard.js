@@ -80,7 +80,7 @@ $(function () {
       regions: [
         {
           values           : visitorsData,
-          scale            : ['#92c1dc', '#ebf4f9'],
+          scale            : ['#880414', '#ebf4f9'],
           normalizeFunction: 'polynomial'
         }
       ]
@@ -95,7 +95,7 @@ $(function () {
   var myvalues = [1000, 1200, 920, 927, 931, 1027, 819, 930, 1021];
   $('#sparkline-1').sparkline(myvalues, {
     type     : 'line',
-    lineColor: '#92c1dc',
+    lineColor: '#880414',
     fillColor: '#ebf4f9',
     height   : '50',
     width    : '80'
@@ -103,7 +103,7 @@ $(function () {
   myvalues = [515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921];
   $('#sparkline-2').sparkline(myvalues, {
     type     : 'line',
-    lineColor: '#92c1dc',
+    lineColor: '#880414',
     fillColor: '#ebf4f9',
     height   : '50',
     width    : '80'
@@ -111,7 +111,7 @@ $(function () {
   myvalues = [15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21];
   $('#sparkline-3').sparkline(myvalues, {
     type     : 'line',
-    lineColor: '#92c1dc',
+    lineColor: '#880414',
     fillColor: '#ebf4f9',
     height   : '50',
     width    : '80'
@@ -145,7 +145,7 @@ $(function () {
     xkey      : 'y',
     ykeys     : ['item1', 'item2'],
     labels    : ['Item 1', 'Item 2'],
-    lineColors: ['#a0d0e0', '#3c8dbc'],
+    lineColors: ['#880414', '#3c8dbc'],
     hideHover : 'auto'
   });
   var line = new Morris.Line({

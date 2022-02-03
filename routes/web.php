@@ -125,12 +125,38 @@ Route::get('/kelompok-obat', function () {
 	return view('gudang.kelompok-obat.index');
 });
 
+Route::get('/petshop', function () {
+	return view('petshop.index');
+});
+
+Route::get('/petshop/tambah', function () {
+	return view('petshop.petshop-tambah');
+});
+
+Route::get('/petshop/edit/{id}', function () {
+	return view('petshop.petshop-edit');
+});
+
+Route::get('/petshop/detail/{id}', function () {
+	return view('petshop.petshop-detail');
+});
+
+Route::get('payment/printreceipt/{master_payment_id}', 'PetshopController@print_receipt');
+
 Route::get('/laporan-keuangan-harian', function () {
 	return view('laporan-keuangan.harian.index');
 });
 
 Route::get('/laporan-keuangan-harian/detail/{id}', function () {
 	return view('laporan-keuangan.harian.detail-harian');
+});
+
+Route::get('/laporan-keuangan-harian-petshop', function () {
+	return view('laporan-keuangan-petshop.harian.index');
+});
+
+Route::get('/laporan-keuangan-harian-petshop/detail/{id}', function () {
+	return view('laporan-keuangan-petshop.harian.detail-harian');
 });
 
 Route::get('/laporan-keuangan-mingguan', function () {
@@ -141,12 +167,28 @@ Route::get('/laporan-keuangan-mingguan/detail/{id}', function () {
 	return view('laporan-keuangan.mingguan.detail-mingguan');
 });
 
+Route::get('/laporan-keuangan-mingguan-petshop', function () {
+	return view('laporan-keuangan-petshop.mingguan.index');
+});
+
+Route::get('/laporan-keuangan-mingguan-petshop/detail/{id}', function () {
+	return view('laporan-keuangan-petshop.mingguan.detail-mingguan');
+});
+
 Route::get('/laporan-keuangan-bulanan', function () {
 	return view('laporan-keuangan.bulanan.index');
 });
 
 Route::get('/laporan-keuangan-bulanan/detail/{id}', function () {
 	return view('laporan-keuangan.bulanan.detail-bulanan');
+});
+
+Route::get('/laporan-keuangan-bulanan-petshop', function () {
+	return view('laporan-keuangan-petshop.bulanan.index');
+});
+
+Route::get('/laporan-keuangan-bulanan-petshop/detail/{id}', function () {
+	return view('laporan-keuangan-petshop.bulanan.detail-bulanan');
 });
 
 Route::get('/profil/{id}', function () {
@@ -175,7 +217,7 @@ Route::post('/print', function(Request $request) {
       // info('data', $request->data);
       // Nama 14 karakter, qty 3, Harga 6, total 6
       $printer->setJustification(Printer::JUSTIFY_CENTER);
-      $printer -> text('Bintang Vet Clinic' . "\n", Printer::JUSTIFY_CENTER);
+      $printer -> text('Rambad Vet Clinic' . "\n", Printer::JUSTIFY_CENTER);
       $printer->setJustification(Printer::JUSTIFY_LEFT);
       $printer -> text($request->address. "\n");
       $printer -> text('--------------------------------'. "\n");

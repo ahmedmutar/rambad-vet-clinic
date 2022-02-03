@@ -30,7 +30,7 @@ input::-webkit-file-upload-button {
   justify-content: center;
   position: relative;
 
-  border: 1px solid #3c8dbc;
+  border: 1px solid #880414;
   padding: 70px 0px;
 }
 
@@ -43,7 +43,7 @@ input::-webkit-file-upload-button {
 #section-upload-image .box-image-upload {
   width: 150px; height: 150px;
   font-size: 50px;
-  border: 1px solid #00c0ef;
+  border: 1px solid #880414;
   border-style: dashed;
   position: relative;
 
@@ -93,7 +93,7 @@ input::-webkit-file-upload-button {
 }
 
 #section-foto-kondisi-pasien .img-style {
-  border:#00c0ef;
+  border:#880414;
   border-style: double;
   margin: 5px 5px;
   float: left;

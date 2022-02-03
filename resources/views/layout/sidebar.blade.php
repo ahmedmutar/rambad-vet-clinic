@@ -3,7 +3,7 @@
 	<!-- sidebar: style can be found in sidebar.less -->
 	<section class="sidebar">
 		<div class="section-logo-vet-clinic">
-			<img src="{{ asset('assets/image/logo-vet-clinic.jpg') }}">
+			<img src="{{ asset('assets/image/rambadlogo.jpg') }}">
 		</div>
 		<ul class="sidebar-menu" data-widget="tree">
 			<li class="header">MENU UTAMA</li>
@@ -73,6 +73,7 @@
 			</li>
 			<li class="menuPembayaran"><a href="{{ url('/pembayaran') }}"><i class="fa fa-money" aria-hidden="true"></i> <span>Pembayaran</span></a></li>
       <li class="menuPenggajian"><a href="{{ url('/penggajian') }}"><i class="fa fa-dollar" aria-hidden="true"></i> <span>Penggajian</span></a></li>
+      <li class="menuPetShop"><a href="{{ url('/petshop') }}"><i class="fa fa-paw" aria-hidden="true"></i> <span>Pet Shop</span></a></li>
 			<li class="treeview menuKeuangan">
 				<a>
 					<i class="fa fa-file-text" aria-hidden="true"></i>
@@ -85,7 +86,21 @@
 					<li><a href="{{ url('/laporan-keuangan-harian') }}"><i class="fa fa-circle-o"></i> Harian</a></li>
 					<li><a href="{{ url('/laporan-keuangan-mingguan') }}"><i class="fa fa-circle-o"></i> Mingguan</a></li>
 					<li><a href="{{ url('/laporan-keuangan-bulanan') }}"><i class="fa fa-circle-o"></i> Bulanan</a></li>
-					{{-- <li><a><i class="fa fa-circle-o"></i> Tahunan</a></li> --}}
+				</ul>
+			</li>
+
+      <li class="treeview menuKeuanganPetshop">
+				<a>
+					<i class="fa fa-file-text" aria-hidden="true"></i>
+					<span>Laporan Keuangan Petshop</span>
+					<span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+					</span>
+				</a>
+				<ul class="treeview-menu">
+					<li><a href="{{ url('/laporan-keuangan-harian-petshop') }}"><i class="fa fa-circle-o"></i> Harian</a></li>
+					<li><a href="{{ url('/laporan-keuangan-mingguan-petshop') }}"><i class="fa fa-circle-o"></i> Mingguan</a></li>
+					<li><a href="{{ url('/laporan-keuangan-bulanan-petshop') }}"><i class="fa fa-circle-o"></i> Bulanan</a></li>
 				</ul>
 			</li>
 			{{-- <li class="menuKunjungan"><a href="{{ url('/kunjungan') }}"><i class="fa fa-wheelchair" aria-hidden="true"></i> <span>Kunjungan</span></a></li> --}}

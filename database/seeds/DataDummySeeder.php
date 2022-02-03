@@ -209,7 +209,7 @@ class DataDummySeeder extends Seeder
         //pasien
         DB::table('patients')->insert([
             'branch_id' => 1,
-            'id_member' => 'BVC-P-AS-0001',
+            'id_member' => 'RVC-P-AS-0001',
             'pet_category' => 'kucing',
             'pet_name' => 'kuki',
             'pet_gender' => 'betina',
@@ -224,7 +224,7 @@ class DataDummySeeder extends Seeder
 
         DB::table('patients')->insert([
             'branch_id' => 1,
-            'id_member' => 'BVC-P-AS-0002',
+            'id_member' => 'RVC-P-AS-0002',
             'pet_category' => 'monyet',
             'pet_name' => 'kimbo',
             'pet_gender' => 'jantan',
@@ -239,7 +239,7 @@ class DataDummySeeder extends Seeder
 
         DB::table('patients')->insert([
             'branch_id' => 1,
-            'id_member' => 'BVC-P-AS-0003',
+            'id_member' => 'RVC-P-AS-0003',
             'pet_category' => 'anjing',
             'pet_name' => 'sisi',
             'pet_gender' => 'betina',
@@ -254,7 +254,7 @@ class DataDummySeeder extends Seeder
 
         DB::table('patients')->insert([
             'branch_id' => 3,
-            'id_member' => 'BVC-P-TJ-0001',
+            'id_member' => 'RVC-P-TJ-0001',
             'pet_category' => 'anjing',
             'pet_name' => 'rambo',
             'pet_gender' => 'jantan',
@@ -269,7 +269,7 @@ class DataDummySeeder extends Seeder
 
         DB::table('patients')->insert([
             'branch_id' => 3,
-            'id_member' => 'BVC-P-TJ-0002',
+            'id_member' => 'RVC-P-TJ-0002',
             'pet_category' => 'kucing',
             'pet_name' => 'butet',
             'pet_gender' => 'jantan',
@@ -284,7 +284,7 @@ class DataDummySeeder extends Seeder
 
         DB::table('patients')->insert([
             'branch_id' => 3,
-            'id_member' => 'BVC-P-TJ-0003',
+            'id_member' => 'RVC-P-TJ-0003',
             'pet_category' => 'anjing',
             'pet_name' => 'godart',
             'pet_gender' => 'jantan',
@@ -299,7 +299,7 @@ class DataDummySeeder extends Seeder
 
         DB::table('patients')->insert([
             'branch_id' => 2,
-            'id_member' => 'BVC-P-KB-0001',
+            'id_member' => 'RVC-P-KB-0001',
             'pet_category' => 'kucing',
             'pet_name' => 'tabi',
             'pet_gender' => 'tidak diketahui',
@@ -314,7 +314,7 @@ class DataDummySeeder extends Seeder
 
         DB::table('patients')->insert([
             'branch_id' => 2,
-            'id_member' => 'BVC-P-KB-0002',
+            'id_member' => 'RVC-P-KB-0002',
             'pet_category' => 'kucing',
             'pet_name' => 'mpus',
             'pet_gender' => 'betina',
@@ -329,7 +329,7 @@ class DataDummySeeder extends Seeder
 
         DB::table('patients')->insert([
             'branch_id' => 2,
-            'id_member' => 'BVC-P-KB-0003',
+            'id_member' => 'RVC-P-KB-0003',
             'pet_category' => 'ikan',
             'pet_name' => 'woofy',
             'pet_gender' => 'tidak diketahui',
@@ -1955,7 +1955,7 @@ class DataDummySeeder extends Seeder
 
         //registrations
         DB::table('registrations')->insert([
-            'id_number' => 'BVC-RP-TJ-0001',
+            'id_number' => 'RVC-RP-TJ-0001',
             'patient_id' => '4',
             'complaint' => 'pilek',
             'registrant' => 'agus',
@@ -1966,7 +1966,7 @@ class DataDummySeeder extends Seeder
         ]);
 
         DB::table('registrations')->insert([
-            'id_number' => 'BVC-RP-KB-0001',
+            'id_number' => 'RVC-RP-KB-0001',
             'patient_id' => '7',
             'complaint' => 'gatal-gatal',
             'registrant' => 'kuncoro',
@@ -1977,7 +1977,7 @@ class DataDummySeeder extends Seeder
         ]);
 
         DB::table('registrations')->insert([
-            'id_number' => 'BVC-RP-AS-0001',
+            'id_number' => 'RVC-RP-AS-0001',
             'patient_id' => '1',
             'complaint' => 'batuk',
             'registrant' => 'supri',
@@ -1988,7 +1988,7 @@ class DataDummySeeder extends Seeder
         ]);
 
         DB::table('registrations')->insert([
-            'id_number' => 'BVC-RP-AS-0002',
+            'id_number' => 'RVC-RP-AS-0002',
             'patient_id' => '1',
             'complaint' => 'diare',
             'registrant' => 'sartoni',
