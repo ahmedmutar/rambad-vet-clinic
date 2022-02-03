@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             'created_at' => '2022-02-03'
         ]);
 
-        DB::table('users')->insert([
+        DB::table('branches')->insert([
           'branch_code' => '001',
           'branch_name' => 'Pondok Aren',
           'isDeleted' => 0,
