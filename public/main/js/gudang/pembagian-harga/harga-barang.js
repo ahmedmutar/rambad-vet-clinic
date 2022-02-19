@@ -60,7 +60,7 @@ $(document).ready(function() {
 	$('.input-search-section input').keypress(function(e) {
 		if (e.which == 13) { onSearch($(this).val()); }
   });
-  
+
   $('.onOrdering').click(function() {
 		const column = $(this).attr('data');
 		const orderBy = $(this).attr('orderby');
@@ -171,7 +171,7 @@ $(document).ready(function() {
 		let fileTypeAllowed = /.\.(xlsx|xls)$/i;
 		let fileName = data.originalFiles[0]['name'];
 		let fileSize = data.originalFiles[0]['size'];
-		
+
 		if (!fileTypeAllowed.test(fileName)) {
 			$('.validate-error').html('File harus berformat .xlsx atau .xls');
 		} else {
@@ -188,7 +188,7 @@ $(document).ready(function() {
 			loadHargaBarang();
 		}, 1000);
 	}).on('fileuploadfail', function(e, data) {
-		const getResponsError = data._response.jqXHR.responseJSON.errors.hasOwnProperty('file') ? data._response.jqXHR.responseJSON.errors.file 
+		const getResponsError = data._response.jqXHR.responseJSON.errors.hasOwnProperty('file') ? data._response.jqXHR.responseJSON.errors.file
 			: data._response.jqXHR.responseJSON.errors;
 
 		let errText = '';
@@ -407,10 +407,10 @@ $(document).ready(function() {
               + `<td>${v.category_name}</td>`
               + `<td>${v.total_item}</td>`
               + `<td>${v.unit_name}</td>`
-              + `<td>Rp ${typeof(v.selling_price) == 'number' ? v.selling_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : ''}</td>`
-              + `<td>Rp ${typeof(v.capital_price) == 'number' ? v.capital_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : ''}</td>`
-              + `<td>Rp ${typeof(v.doctor_fee) == 'number' ? v.doctor_fee.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : ''}</td>`
-              + `<td>Rp ${typeof(v.petshop_fee) == 'number' ? v.petshop_fee.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : ''}</td>`
+              + `<td>Rp ${typeof(v.selling_price) == 'string' ? v.selling_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : ''}</td>`
+              + `<td>Rp ${typeof(v.capital_price) == 'string' ? v.capital_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : ''}</td>`
+              + `<td>Rp ${typeof(v.doctor_fee) == 'string' ? v.doctor_fee.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : ''}</td>`
+              + `<td>Rp ${typeof(v.petshop_fee) == 'string' ? v.petshop_fee.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : ''}</td>`
               + `<td>${v.branch_name}</td>`
               + `<td>${v.created_by}</td>`
               + `<td>${v.created_at}</td>`
@@ -446,7 +446,7 @@ $(document).ready(function() {
           $('#jumlahBarangTxt').text(getObj.total_item);
           $('#satuanBarangTxt').text(getObj.unit_name);
 				});
-			
+
 				$('.openFormDelete').click(function() {
 					getId = $(this).val();
 					modalState = 'delete';
@@ -472,7 +472,7 @@ $(document).ready(function() {
 			headers : { 'Authorization': `Bearer ${token}` },
 			type    : 'GET',
 			beforeSend: function() { $('#loading-screen').show(); },
-			success: function(data) {	
+			success: function(data) {
 				if (data.length) {
 					for (let i = 0 ; i < data.length ; i++) {
 						optCabang += `<option value=${data[i].id}>${data[i].branch_name}</option>`;
@@ -566,7 +566,7 @@ $(document).ready(function() {
   function validationForm() {
     if (!$('#selectedCabangOnBarang').val()) {
 			$('#cabangOnBarangErr1').text('Cabang barang harus di isi'); isValidSelectedCabangOnBarang = false;
-		} else { 
+		} else {
 			$('#cabangOnBarangErr1').text(''); isValidSelectedCabangOnBarang = true;
 		}
 
@@ -605,7 +605,7 @@ $(document).ready(function() {
 		} else {
 			$('#feePetshopOnBarangErr1').text(''); isValidFeePetshopOnBarang = true;
     }
-    
+
     $('#beErr').empty(); isBeErr = false;
     validationBtnSubmitHargaBarang();
   }
@@ -617,7 +617,7 @@ $(document).ready(function() {
 
     $('#hargaJualOnBarang').val(null); $('#hargaModalOnBarang').val(null);
     $('#feeDokterOnBarang').val(null); $('#feePetshopOnBarang').val(null);
-    
+
     $('#customErr1').empty(); customErr1 = false;
     $('#beErr').empty(); isBeErr = false;
 
@@ -642,7 +642,7 @@ $(document).ready(function() {
 
   function validationHargaJual() {
     let hargaJual  = $('#hargaJualOnBarang').val();
-    let hargaModal = $('#hargaModalOnBarang').val(); 
+    let hargaModal = $('#hargaModalOnBarang').val();
     let feeDokter  = $('#feeDokterOnBarang').val();
     let feePetshop = $('#feePetshopOnBarang').val();
 
@@ -654,13 +654,13 @@ $(document).ready(function() {
     const totalHargaJual = parseInt(hargaModal) + parseInt(feeDokter) + parseInt(feePetshop);
 
     if (parseInt(hargaJual) !== totalHargaJual) {
-      $('#customErr1').text('Total harga modal, fee dokter, dan fee petshop tidak sama dengan harga jual'); 
+      $('#customErr1').text('Total harga modal, fee dokter, dan fee petshop tidak sama dengan harga jual');
       customErr1 = false;
-		} else { 
+		} else {
 			$('#customErr1').text(''); customErr1 = true;
 		}
   }
-  
+
   function validationBtnSubmitHargaBarang() {
     if (!isValidSelectedCabangOnBarang || !isValidSelectedKategoriBarang || !isValidSelectedNamaBarang
       || !isValidHargaJualOnBarang || !isValidHargaModalOnBarang || !isValidFeeDokterOnBarang || !isValidFeePetshopOnBarang
