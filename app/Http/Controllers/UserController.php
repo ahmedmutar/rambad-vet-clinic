@@ -441,7 +441,7 @@ class UserController extends Controller
         $data = DB::table('users')
             ->join('branches', 'users.branch_id', '=', 'branches.id')
             ->select('users.id', 'users.username', 'users.role', 'branches.id as branch_id', 'branches.branch_name')
-            ->where('users.role', '=', 'dokter')
+            ->wherein('users.role', ['dokter','admin'])
             ->where('users.status', '=', '1')
             ->where('users.isDeleted', '=', '0');
 
