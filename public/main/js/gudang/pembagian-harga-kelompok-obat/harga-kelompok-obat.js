@@ -56,7 +56,7 @@ $(document).ready(function() {
 	$('.input-search-section input').keypress(function(e) {
 		if (e.which == 13) { onSearch($(this).val()); }
   });
-  
+
   $('.onOrdering').click(function() {
 		const column = $(this).attr('data');
 		const orderBy = $(this).attr('orderby');
@@ -292,10 +292,10 @@ $(document).ready(function() {
               + `<td>${++idx}</td>`
               + `<td>${v.group_name}</td>`
               + `<td>${v.branch_name}</td>`
-              + `<td>Rp ${typeof(v.selling_price) == 'number' ? v.selling_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : ''}</td>`
-              + `<td>Rp ${typeof(v.capital_price) == 'number' ? v.capital_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : ''}</td>`
-              + `<td>Rp ${typeof(v.doctor_fee) == 'number' ? v.doctor_fee.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : ''}</td>`
-              + `<td>Rp ${typeof(v.petshop_fee) == 'number' ? v.petshop_fee.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : ''}</td>`
+              + `<td>Rp ${typeof(v.selling_price) == 'string' ? v.selling_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : ''}</td>`
+              + `<td>Rp ${typeof(v.capital_price) == 'string' ? v.capital_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : ''}</td>`
+              + `<td>Rp ${typeof(v.doctor_fee) == 'string' ? v.doctor_fee.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : ''}</td>`
+              + `<td>Rp ${typeof(v.petshop_fee) == 'string' ? v.petshop_fee.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : ''}</td>`
               + `<td>${v.created_by}</td>`
               + `<td>${v.created_at}</td>`
               + ((role.toLowerCase() != 'admin') ? `` : `<td>
@@ -319,13 +319,13 @@ $(document).ready(function() {
           loadKelompokObat(getObj.branch_id, getObj.medicine_group_id); formConfigure();
 
 					getId = getObj.id;
-          $('#hargaJual').val(getObj.selling_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')); 
+          $('#hargaJual').val(getObj.selling_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
           $('#hargaModal').val(getObj.capital_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
-          $('#feeDokter').val(getObj.doctor_fee.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')); 
+          $('#feeDokter').val(getObj.doctor_fee.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
           $('#feePetshop').val(getObj.petshop_fee.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
           $('#selectedCabang').val(getObj.branch_id); $('#selectedCabang').trigger('change');
 				});
-			
+
 				$('.openFormDelete').click(function() {
 					getId = $(this).val();
 					modalState = 'delete';
@@ -351,7 +351,7 @@ $(document).ready(function() {
 			headers : { 'Authorization': `Bearer ${token}` },
 			type    : 'GET',
 			beforeSend: function() { $('#loading-screen').show(); },
-			success: function(data) {	
+			success: function(data) {
 				if (data.length) {
 					for (let i = 0 ; i < data.length ; i++) {
 						optCabang += `<option value=${data[i].id}>${data[i].branch_name}</option>`;
@@ -408,7 +408,7 @@ $(document).ready(function() {
   function validationForm() {
     if (!$('#selectedCabang').val()) {
 			$('#cabangErr1').text('Cabang barang harus di isi'); isValidSelectedCabang = false;
-		} else { 
+		} else {
 			$('#cabangErr1').text(''); isValidSelectedCabang = true;
 		}
 
@@ -441,7 +441,7 @@ $(document).ready(function() {
 		} else {
 			$('#feePetshopErr1').text(''); isValidFeePetshop = true;
     }
-    
+
     $('#beErr').empty(); isBeErr = false;
     validationBtnSubmitHargaKelompokObat();
   }
@@ -452,7 +452,7 @@ $(document).ready(function() {
 
     $('#hargaJual').val(null); $('#hargaModal').val(null);
     $('#feeDokter').val(null); $('#feePetshop').val(null);
-    
+
     $('#customErr1').empty(); customErr1 = false;
     $('#beErr').empty(); isBeErr = false;
 
@@ -482,7 +482,7 @@ $(document).ready(function() {
 
   function validationHargaJual() {
     let hargaJual  = $('#hargaJual').val();
-    let hargaModal = $('#hargaModal').val(); 
+    let hargaModal = $('#hargaModal').val();
     let feeDokter  = $('#feeDokter').val();
     let feePetshop = $('#feePetshop').val();
 
@@ -494,13 +494,13 @@ $(document).ready(function() {
     const totalHargaJual = parseInt(hargaModal) + parseInt(feeDokter) + parseInt(feePetshop);
 
     if (parseInt(hargaJual) !== totalHargaJual) {
-      $('#customErr1').text('Total harga modal, fee dokter, dan fee petshop tidak sama dengan harga jual'); 
+      $('#customErr1').text('Total harga modal, fee dokter, dan fee petshop tidak sama dengan harga jual');
       customErr1 = false;
-		} else { 
+		} else {
 			$('#customErr1').text(''); customErr1 = true;
 		}
   }
-  
+
   function validationBtnSubmitHargaKelompokObat() {
     if (!isValidSelectedCabang || !isValidSelectedKelompokObat || !isValidHargaJual
       || !isValidHargaModal || !isValidFeeDokter || !isValidFeePetshop
