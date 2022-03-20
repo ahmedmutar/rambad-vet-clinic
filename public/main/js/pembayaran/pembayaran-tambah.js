@@ -185,7 +185,7 @@ $(document).ready(function () {
             : ""
         }</td>` +
         `<td>${
-          typeof lj.price_overall == "number"
+          typeof lj.price_overall == "string"
             ? lj.price_overall.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
             : ""
         }</td>` +
@@ -374,7 +374,7 @@ $(document).ready(function () {
   function processCalculationTagihan() {
     let total = 0;
 
-    calculationPay.forEach((calc) => (total += calc.price));
+    calculationPay.forEach((calc) => (total += parseInt(calc.price)));
 
     let totalText = `Rp. ${total
       .toString()
