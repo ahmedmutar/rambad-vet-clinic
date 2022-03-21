@@ -206,7 +206,7 @@ $(document).ready(function () {
     if (!data.status_paid_off) {
       let total = 0;
 
-      calculationPay.forEach((calc) => (total += calc.price_overall));
+      calculationPay.forEach((calc) => (total += parseInt(calc.price_overall)));
 
       let totalText = `Rp. ${total
         .toString()
