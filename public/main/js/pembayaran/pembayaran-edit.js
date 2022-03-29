@@ -129,22 +129,22 @@ $(document).ready(function () {
         cancel = "d-block";
       }
 
-      if (role.toLowerCase() != "admin" || !lj.status_paid_off == "1") {
+      if (role.toLowerCase() != "admin" || lj.status_paid_off == "0") {
         disabled = "disabled";
       } else {
         disabled = "";
       }
 
       if (
-        (lj.status_paid_off == "1" && !lj.isRevert == "1") ||
-        !lj.status_paid_off == "1"
+        (lj.status_paid_off == "1" && lj.isRevert == "0") ||
+        lj.status_paid_off == "0"
       ) {
         revert = "d-none";
       } else {
         revert = "d-block";
       }
 
-      if (role.toLowerCase() != "admin" || !lj.status_paid_off == "1") {
+      if (role.toLowerCase() != "admin" || lj.status_paid_off == "0") {
         admin = "disabled";
       } else {
         admin = "";
