@@ -104,6 +104,49 @@ $(document).ready(function () {
     $("#list-selected-jasa tr").remove();
 
     selectedListJasa.forEach((lj, idx) => {
+      let temp = "";
+      let chk = "";
+      let cancel = "";
+      let disabled = "";
+      let revert = "";
+      let admin = "";
+
+      if (lj.checked == "1") {
+        chk = "checked";
+      }
+
+      if (lj.status_paid_off == "1" && lj.isRevert == "1") {
+        temp = '<span style="text-decoration: line-through;">Lunas</span>';
+      } else if (lj.status_paid_off == "1" && !lj.isRevert == "1") {
+        temp = "Lunas";
+      } else {
+        temp = `<input type="checkbox" index=${idx} class="isBayarJasa" ${chk}/>`;
+      }
+
+      if (lj.status_paid_off && lj.isRevert) {
+        cancel = "d-none";
+      } else {
+        cancel = "d-block";
+      }
+
+      if (role.toLowerCase() != "admin" || !lj.status_paid_off) {
+        disabled = "disabled";
+      } else {
+        disabled = "";
+      }
+
+      if ((lj.status_paid_off && !lj.isRevert) || !lj.status_paid_off) {
+        revert = "d-none";
+      } else {
+        revert = "d-block";
+      }
+
+      if (role.toLowerCase() != "admin" || !lj.status_paid_off) {
+        admin = "disabled";
+      } else {
+        admin = "";
+      }
+
       rowSelectedListJasa +=
         `<tr>` +
         `<td>${no}</td>` +
@@ -123,33 +166,37 @@ $(document).ready(function () {
             : ""
         }</td>` +
         `<td>${
-          lj.status_paid_off && lj.isRevert
-            ? '<span style="text-decoration: line-through;">Lunas</span>'
-            : lj.status_paid_off && !lj.isRevert
-            ? "Lunas"
-            : `<input type="checkbox" index=${idx} class="isBayarJasa" ${
-                lj.checked ? "checked" : ""
-              }/>`
-        }</td>` +
+          temp
+          // lj.status_paid_off && lj.isRevert
+          //   ? '<span style="text-decoration: line-through;">Lunas</span>' : lj.status_paid_off && !lj.isRevert
+          //   ? "Lunas"
+          //   : `<input type="checkbox" index=${idx} class="isBayarJasa" ${
+          //       lj.checked ? "checked" : ""
+          //     }/>`
+        }
+        </td>` +
         `<td>
               <button type="button" class="btn btn-danger cancelPembayaranJasa ${
-                lj.status_paid_off && lj.isRevert ? "d-none" : "d-block"
+                cancel //lj.status_paid_off && lj.isRevert ? "d-none" : "d-block"
               }" title="Membatalkan Pembayaran"
               ${
-                role.toLowerCase() != "admin" || !lj.status_paid_off
-                  ? "disabled"
-                  : ""
+                // role.toLowerCase() != "admin" || !lj.status_paid_off
+                //   ? "disabled"
+                //   : ""
+                disabled
               } index=${idx}><i class="fa fa-close" aria-hidden="true"></i></button>
               <button type="button" class="btn btn-success revertPembayaranJasa
               ${
-                (lj.status_paid_off && !lj.isRevert) || !lj.status_paid_off
-                  ? "d-none"
-                  : "d-block"
+                // (lj.status_paid_off && !lj.isRevert) || !lj.status_paid_off
+                //   ? "d-none"
+                //   : "d-block"
+                revert
               }" title="Mengembalikan Pelunasan"
               ${
-                role.toLowerCase() != "admin" || !lj.status_paid_off
-                  ? "disabled"
-                  : ""
+                admin
+                // role.toLowerCase() != "admin" || !lj.status_paid_off
+                //   ? "disabled"
+                //   : ""
               } index=${idx}><i class="fa fa-undo" aria-hidden="true"></i></button>
           </td>` +
         `</tr>`;
