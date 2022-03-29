@@ -153,7 +153,7 @@ $(document).ready(function () {
     $("#list-selected-barang tr").remove();
     selectedListBarang.forEach((lb, idx) => {
       let temp = "";
-      if (lj.status_paid_off == "0") {
+      if (lb.status_paid_off == "0") {
         temp = "Belum Lunas";
       } else {
         temp = "Lunas";
