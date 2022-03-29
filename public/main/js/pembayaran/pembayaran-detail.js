@@ -74,6 +74,12 @@ $(document).ready(function () {
     $("#list-selected-jasa tr").remove();
 
     selectedListJasa.forEach((lj, idx) => {
+      let temp = "";
+      if (lj.status_paid_off == "0") {
+        temp = "Belum Lunas";
+      } else {
+        temp = "Lunas";
+      }
       rowSelectedListJasa +=
         `<tr>` +
         `<td>${no}</td>` +
@@ -92,7 +98,10 @@ $(document).ready(function () {
             ? lj.price_overall.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
             : ""
         }</td>` +
-        `<td>${lj.status_paid_off ? "Lunas" : "Belum Lunas"}</td>` +
+        `<td>${
+          temp
+          //lj.status_paid_off ? "Lunas" : "Belum Lunas"
+        }</td>` +
         `</tr>`;
       ++no;
     });
@@ -143,6 +152,12 @@ $(document).ready(function () {
 
     $("#list-selected-barang tr").remove();
     selectedListBarang.forEach((lb, idx) => {
+      let temp = "";
+      if (lj.status_paid_off == "0") {
+        temp = "Belum Lunas";
+      } else {
+        temp = "Lunas";
+      }
       rowSelectedListBarang +=
         `<tr>` +
         `<td>${no}</td>` +
@@ -160,7 +175,10 @@ $(document).ready(function () {
             ? lb.price_overall.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
             : ""
         }</td>` +
-        `<td>${lb.status_paid_off ? "Lunas" : "Belum Lunas"}</td>` +
+        `<td>${
+          temp
+          //lb.status_paid_off ? "Lunas" : "Belum Lunas"
+        }</td>` +
         `</tr>`;
       ++no;
     });
