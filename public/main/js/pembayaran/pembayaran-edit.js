@@ -508,7 +508,7 @@ $(document).ready(function () {
       }
     });
 
-    let totalText = `Rp. ${total
+    let totalText = `Rp. ${parseInt(total)
       .toString()
       .replace(/\B(?=(\d{3})+(?!\d))/g, ".")},00`;
     $("#totalBayarTxt").text(totalText);
