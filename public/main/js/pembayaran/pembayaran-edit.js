@@ -123,25 +123,28 @@ $(document).ready(function () {
         temp = `<input type="checkbox" index=${idx} class="isBayarJasa" ${chk}/>`;
       }
 
-      if (lj.status_paid_off && lj.isRevert) {
+      if (lj.status_paid_off == "1" && lj.isRevert == "1") {
         cancel = "d-none";
       } else {
         cancel = "d-block";
       }
 
-      if (role.toLowerCase() != "admin" || !lj.status_paid_off) {
+      if (role.toLowerCase() != "admin" || !lj.status_paid_off == "1") {
         disabled = "disabled";
       } else {
         disabled = "";
       }
 
-      if ((lj.status_paid_off && !lj.isRevert) || !lj.status_paid_off) {
+      if (
+        (lj.status_paid_off == "1" && !lj.isRevert == "1") ||
+        !lj.status_paid_off == "1"
+      ) {
         revert = "d-none";
       } else {
         revert = "d-block";
       }
 
-      if (role.toLowerCase() != "admin" || !lj.status_paid_off) {
+      if (role.toLowerCase() != "admin" || !lj.status_paid_off == "1") {
         admin = "disabled";
       } else {
         admin = "";
