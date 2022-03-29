@@ -146,21 +146,24 @@ $(document).ready(function () {
               `<td>${v.created_by}</td>` +
               `<td>
                   <button type="button" class="btn btn-info openDetail" ${
-                    v.status_finish == 0 && role.toLowerCase() != "admin"
+                    (v.status_finish == 0 && role.toLowerCase() != "admin") ||
+                    role.toLowerCase() != "dokter"
                       ? "disabled"
                       : ""
                   } value=${
                 v.id
               } title="Detail"><i class="fa fa-eye" aria-hidden="true"></i></button>
                   <button type="button" class="btn btn-warning openFormEdit" ${
-                    v.status_finish == 1 //&& role.toLowerCase() != "admin"
+                    (v.status_finish == 1 && role.toLowerCase() != "admin") ||
+                    role.toLowerCase() != "dokter"
                       ? "disabled"
                       : ""
                   } value=${
                 v.id
               }><i class="fa fa-pencil" aria-hidden="true"></i></button>
                   <button type="button" class="btn btn-danger openFormDelete" ${
-                    v.status_finish == 1 //&& role.toLowerCase() != "admin"
+                    (v.status_finish == 1 && role.toLowerCase() != "admin") ||
+                    role.toLowerCase() != "dokter"
                       ? "disabled"
                       : ""
                   } value=${
